@@ -36,10 +36,10 @@ yarn-error.log*
 !.env.example
 
 # --- IDEs e Editores ---
-.vscode/*
-!.vscode/extensions.json
-!.vscode/settings.json
-.vscode/*
+# .vscode/*
+# !.vscode/extensions.json
+# !.vscode/settings.json
+# .vscode/*
 .idea/
 *.swp
 *.swo
