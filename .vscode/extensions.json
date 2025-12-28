@@ -1,0 +1,18 @@
+{
+  "recommendations": [
+    // Formatador de Código
+    "esbenp.prettier-vscode",
+
+    // Linter
+    "dbaeumer.vscode-eslint",
+
+    // EditorConfig
+    "ms-vscode.vscode-typescript-next",
+
+    // Ferramentas para Docker
+    "ms-azuretools.vscode-containers",
+
+    // Cliente PostgreSQL para VSCode
+    "cweijan.vscode-postgresql-client2"
+  ]
+}

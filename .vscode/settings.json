@@ -1,0 +1,29 @@
+{
+  // Formatação Geral
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+
+  // Ações ao Salvar: Correções automáticas do ESLint
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+
+  // Organização de Arquivos
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+
+  // Configurações do ESLint
+  "eslint.workingDirectories": [
+    { "directory": "./backend", "changeProcessCWD": true },
+    { "directory": "./frontend", "changeProcessCWD": true }
+  ],
+
+  // Melhora a performance desativando o ESLint em arquivos desnecessários
+  // O ESLint foca em lógica, o Prettier foca em estilo.
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}
