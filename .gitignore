@@ -1,0 +1,59 @@
+# --- Dependências de Pacotes ---
+node_modules/
+.pnp
+.pnp.js
+
+# --- NestJS (Server-side) ---
+dist/
+/dist
+artifacts/
+*.tsbuildinfo
+# Logs do Nest
+nest-cli.json.bak
+# Testes do Nest
+/coverage
+.nyc_output
+
+# --- React (Client-side / React Router) ---
+# Builds do Vite ou Create React App
+dist/
+build/
+out/
+# Cache do Vite
+.vite/
+# Logs de erro comuns no frontend
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# --- Variáveis de Ambiente (CRÍTICO) ---
+# Nunca suba esses arquivos para o GitHub
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+!.env.example
+
+# --- IDEs e Editores ---
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.vscode/*
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# --- Logs e Diagnósticos ---
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# --- Outros ---
+.cache/
+tmp/
