@@ -13,7 +13,7 @@ A aplicação como um todo foi desenvolvida para criar e manipular `Ordens de Se
 
 ## Aprendizados com este Projeto
 
-Em sala de aula o professor ministrou uma introdução ao React e seus conceitos principais, como `componentes`, `estados`, `props`, `ciclo de vida` e `hooks`, assim como apresentou estes conceitos usando o React Router já na versão 7, que apresenta mudanças significativas em relação ao sua versão 6. 
+Em sala de aula o professor ministrou uma introdução ao React e seus conceitos principais, como `componentes`, `estados`, `props`, `ciclo de vida` e `hooks`, assim como apresentou estes conceitos usando o React Router já na versão 7, que apresenta mudanças significativas em relação ao sua versão 6.
 
 Em aula ou por estudo complementar nós estudamos também conceitos relacionados ao React Router, como `loaders`, `clienLoaders`, `actions` e `clientActions`, com foco na construção deste projeto.
 
@@ -23,7 +23,7 @@ Por exemplo, entre os conceitos estudados, podemos falar sobre os `loaders` e `a
 - **actions** processam o envio de formulários (POST, PUT, DELETE), por exemplo, salvar algo no banco de dados, e após a sua execução chamam os loaders da pagina para que executem novamente.
 - `clientLoader` e `clientAction` rodam diretamente no browser do cliente, são parecidos com os `loaders` e `actions`, mas por rodarem no navegador podem ter acesso a recursos dos mesmos, por exemplo, um `loader` não tem acesso ao sessionStorage e localStorage, pelo fato destas serem APIs do navegador, mas o `clientLoader` e o `clientAction`, que vivem no navegador possuem acesso a estes recursos.
 
-A escrita do código pode até ocorrer no mesmo arquivo, mas na geração do bundle da aplicação React Router o compilador cria 02 (dois) bundles distintos, um `Server Bundle` que contém loaders, actions e componentes para SSR e um `Client Bundle` na qual o compilador remove as funções loader e action (que irão rodar no servidor) para que elas não sejam enviadas para o navegador do usuário. 
+A escrita do código pode até ocorrer no mesmo arquivo, mas na geração do bundle da aplicação React Router o compilador cria 02 (dois) bundles distintos, um `Server Bundle` que contém loaders, actions e componentes para SSR e um `Client Bundle` na qual o compilador remove as funções loader e action (que irão rodar no servidor) para que elas não sejam enviadas para o navegador do usuário.
 
 Além desses conceitos acima, também há vários outros recursos e comportamentos tanto do React quanto do React Router que merecem atenção especial.
 
@@ -106,7 +106,7 @@ Então, acesse o repositório criado.
 cd atividade-de-desenvolvimento-web-com-react
 ```
 
-### Configure as variáveis de ambiente
+### Configure a variável de ambiente
 
 Crie o arquivo `.env` na **raiz do projeto** a partir do exemplo fornecido:
 
@@ -120,41 +120,27 @@ Você também pode fazer esse procedimento manualmente, copiando o arquivo `.env
 
 Após a criação do arquivo `.env` edite as variáveis de ambiente conforme necessário. Entretanto, as configurações padrão já funcionam para desenvolvimento local.
 
-### Configure o backend
-
-Copie o arquivo `.env` para dentro da pasta `backend`:
-
-```bash
-cp .env backend/.env
-```
-
-**Importante:** O backend também precisa do arquivo `.env` em sua própria pasta para ler as configurações e acessar o banco de dados.
-
-### Inicie o banco de dados
+### Inicie o backend
 
 Na raiz do projeto, execute:
 
 ```bash
-docker-compose up -d
+docker-compose up
 ```
 
-Isso iniciará um container PostgreSQL na porta 5432.
+Esse comando iniciará os containers da API (Nest.js) e do banco de dados.
+
+O docker pode precisar de até 1 (um) minuto para subir os containers e executar as migrations no banco de dados. Enquanto isso, você pode seguir para o proximo passo, iniciar o frontend.
+
+**Observação:** O comando `docker-compose up` irá segurar o terminal, mas você pode rodar o docker liberando o terminal para uso com o comando `docker-compose up -d`.
 
 ## Instalação
 
 ### Backend
 
-Acesse a pasta do projeto `backend/`.
+Ao subir os containers no Docker, um script irá copiar os arquivos que estão na pasta `backend/` para o container da API e, também irá executar as migrações no banco de dados.
 
-```bash
-cd backend
-```
-
-E instale as dependências da aplicação Nest.js.
-
-```bash
-npm install
-```
+Se tudo ocorreu bem, a API já estará disponível no endereço: `http://localhost:3000`
 
 ### Frontend
 
@@ -172,28 +158,10 @@ npm install
 
 ## Execução da aplicação
 
-### Execução das migrações do banco de dados
-
-No diretório `backend` (e com o container do banco de dados já em execução), execute o seguinte comando:
-
-```bash
-npm run m:run
-```
-
-### Inicie o backend
-
-Ainda no diretório `backend` execute:
-
-```bash
-npm run start:dev
-```
-
-Se tudo ocorreu bem, a API estará disponível no endereço: `http://localhost:3000`
-
 
 ### Inicie o frontend
 
-Em outro terminal, no diretório `frontend` execute:
+Em um terminal, no diretório `frontend` execute:
 
 ```bash
 npm run dev
@@ -203,30 +171,42 @@ O frontend estará disponível em: `http://localhost` (mais exatamente: `http://
 
 ### Documentação da API
 
-Com o backend em execução, você pode ter acessoa documentação Swagger pelo seguinte endereço:
+Com o backend em execução, você pode ter acesso a documentação Swagger pelo seguinte endereço:
 
 ```bash
 http://localhost:3000/docs
 ```
 
-## Scripts Disponíveis
+## Finalizar a execução da aplicação
 
 ### Backend
 
-- `npm run start:dev` - Inicia o servidor em modo desenvolvimento
-- `npm run build` - Compila o projeto
-- `npm run m:gen` - Gera uma nova migration
-- `npm run m:run` - Executa as migrations pendentes
-- `npm run m:rev` - Reverte a última migration
-- `npm run test` - Executa os testes
-- `npm run test:e2e` - Executa os testes E2E
+Para finalizar a execução do `backend` use o comando `CTRL + C` caso o Docker esteja segurando o seu terminal.
+
+Mas, se o docker tiver subido os containers pelo comando `docker compose up -d` ele estará `Detached`, assim, na pasta onde está o arquivo `docker-compose.yaml` você pode executar `um dos comandos abaixo`:
+
+```bash
+
+# Caso queira apenas parar a execução dos containers sem apagar os containers
+docker compose stop
+
+# Caso queira parar a execução e deletar os containers (e redes)
+docker compose down
+
+# Caso queira parar a execução e deletar os containers e os volumes
+docker compose down -v
+
+```
+
+Use o comando abaixo para ver se os containers ainda estão em execução:
+
+```bash
+docker ps
+```
 
 ### Frontend
 
-- `npm run dev` - Inicia o servidor de desenvolvimento
-- `npm run build` - Compila o projeto para produção
-- `npm run start` - Inicia o servidor de produção
-
+Como o `frontend` foi o foco desta entrega, ele não foi containerizado, sem assim, se você seguiu este tutorial, a aplicação frontend está em execução vinculada ao seu terminal. Nesse cenário, basta usar o comando `CTRL + C` para parar a execução do React Router.
 
 ## Ultimas Considerações
 

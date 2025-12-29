@@ -1,0 +1,28 @@
+# Dependências locais não são necessárias dentro do container
+node_modules
+
+# Ignorar builds locais para evitar conflitos com builds feitos dentro do container
+dist
+build
+.log
+npm-debug.log
+yarn-debug.log*
+yarn-error.log*
+
+# Evitar copiar ficheiros de configuração do docker
+docker
+Dockerfile*
+docker-compose*
+
+# Ignorar ficheiros e pastas do Git
+.git
+.gitignore
+
+# Esses ficheiros podem conter segredos sensíveis como senhas e chaves API
+.env
+.env.*
+
+# Ignorar arquivos de configuração de testes e documentação
+README.md
+test
+unit-tests.stryker.conf.json
