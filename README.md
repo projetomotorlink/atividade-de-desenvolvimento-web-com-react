@@ -13,7 +13,7 @@ A aplicação como um todo foi desenvolvida para criar e manipular `Ordens de Se
 
 ## Aprendizados com este Projeto
 
-Em sala de aula o professor ministrou uma introdução ao React e seus conceitos principais, como `componentes`, `estados`, `props`, `ciclo de vida` e `hooks`, assim como apresentou estes conceitos usando o React Router já na versão 7, que apresenta mudanças significativas em relação ao sua versão 6. 
+Em sala de aula o professor ministrou uma introdução ao React e seus conceitos principais, como `componentes`, `estados`, `props`, `ciclo de vida` e `hooks`, assim como apresentou estes conceitos usando o React Router já na versão 7, que apresenta mudanças significativas em relação ao sua versão 6.
 
 Em aula ou por estudo complementar nós estudamos também conceitos relacionados ao React Router, como `loaders`, `clienLoaders`, `actions` e `clientActions`, com foco na construção deste projeto.
 
@@ -23,7 +23,7 @@ Por exemplo, entre os conceitos estudados, podemos falar sobre os `loaders` e `a
 - **actions** processam o envio de formulários (POST, PUT, DELETE), por exemplo, salvar algo no banco de dados, e após a sua execução chamam os loaders da pagina para que executem novamente.
 - `clientLoader` e `clientAction` rodam diretamente no browser do cliente, são parecidos com os `loaders` e `actions`, mas por rodarem no navegador podem ter acesso a recursos dos mesmos, por exemplo, um `loader` não tem acesso ao sessionStorage e localStorage, pelo fato destas serem APIs do navegador, mas o `clientLoader` e o `clientAction`, que vivem no navegador possuem acesso a estes recursos.
 
-A escrita do código pode até ocorrer no mesmo arquivo, mas na geração do bundle da aplicação React Router o compilador cria 02 (dois) bundles distintos, um `Server Bundle` que contém loaders, actions e componentes para SSR e um `Client Bundle` na qual o compilador remove as funções loader e action (que irão rodar no servidor) para que elas não sejam enviadas para o navegador do usuário. 
+A escrita do código pode até ocorrer no mesmo arquivo, mas na geração do bundle da aplicação React Router o compilador cria 02 (dois) bundles distintos, um `Server Bundle` que contém loaders, actions e componentes para SSR e um `Client Bundle` na qual o compilador remove as funções loader e action (que irão rodar no servidor) para que elas não sejam enviadas para o navegador do usuário.
 
 Além desses conceitos acima, também há vários outros recursos e comportamentos tanto do React quanto do React Router que merecem atenção especial.
 
@@ -128,7 +128,18 @@ Copie o arquivo `.env` para dentro da pasta `backend`:
 cp .env backend/.env
 ```
 
-**Importante:** O backend também precisa do arquivo `.env` em sua própria pasta para ler as configurações e acessar o banco de dados.
+# Importante!
+
+Não esqueça o passo anterior de `também` ter uma cópia do arquivo `.env` na pasta `backend/` para que a API possa ler as configurações e acessar o banco de dados.
+
+Nós estamos usando o docker neste projeto apenas para evitar ter de instalar um banco de dados PostgreSQL diretamente na maquina local.
+
+Ou seja:
+
+* .env - na raiz do projeto
+* .env - na pasta backend (`backend/.env`).
+
+---
 
 ### Inicie o banco de dados
 
