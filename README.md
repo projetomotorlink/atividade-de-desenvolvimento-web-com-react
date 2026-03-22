@@ -14,6 +14,7 @@ A aplicação como um todo foi desenvolvida para criar e manipular `Ordens de Se
 ## Aprendizados com este Projeto
 
 Em sala de aula o professor ministrou uma introdução ao React e seus conceitos principais, como `componentes`, `estados`, `props`, `ciclo de vida` e `hooks`, assim como apresentou estes conceitos usando o React Router já na versão 7, que apresenta mudanças significativas em relação ao sua versão 6.
+Em sala de aula o professor ministrou uma introdução ao React e seus conceitos principais, como `componentes`, `estados`, `props`, `ciclo de vida` e `hooks`, assim como apresentou estes conceitos usando o React Router já na versão 7, que apresenta mudanças significativas em relação ao sua versão 6.
 
 Em aula ou por estudo complementar nós estudamos também conceitos relacionados ao React Router, como `loaders`, `clienLoaders`, `actions` e `clientActions`, com foco na construção deste projeto.
 
@@ -120,7 +121,17 @@ Você também pode fazer esse procedimento manualmente, copiando o arquivo `.env
 
 Após a criação do arquivo `.env` edite as variáveis de ambiente conforme necessário. Entretanto, as configurações padrão já funcionam para desenvolvimento local.
 
-### Inicie o backend
+### Configure o backend
+
+Copie o arquivo `.env` para dentro da pasta `backend`:
+
+```bash
+cp .env backend/.env
+```
+
+**Importante:** O backend também precisa do arquivo `.env` em sua própria pasta para ler as configurações e acessar o banco de dados.
+
+### Inicie o banco de dados
 
 Na raiz do projeto, execute:
 
